@@ -1,0 +1,5 @@
+# NAOqi Python SDK を保存した場所
+NAOQISDK="$HOME/lib/pynaoqi-python2.7-2.1.4.13-mac64"
+
+# Choregraphe のインストールディレクトリ
+CHOREGRAPHEDIR="/Applications/Aldebaran Robotics/Choregraphe Suite 2.1" 
