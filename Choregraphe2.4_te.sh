@@ -1,8 +1,8 @@
 #!/bin/bash
 
-NAOQISDK="$HOME/naoqi/pynaoqi-python2.7-2.4.2.26-mac64" # <--- NAOqi Python SDK を保存した場所で書き換える
+NAOQISDK="/Users/hgwr/lib/pynaoqi-python2.7-2.1.4.13-mac64" # <--- NAOqi Python SDK を保存した場所で書き換える
 
-CHOREGRAPHEDIR="/Applications/Aldebaran/Choregraphe Suite 2.4" # <-- Choregraphe のインストールディレクトリ
+CHOREGRAPHEDIR="/Applications/Aldebaran Robotics/Choregraphe Suite 2.1" # <-- Choregraphe のインストールディレクトリ
 
 cd "$CHOREGRAPHEDIR"
 
