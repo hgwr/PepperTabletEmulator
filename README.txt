@@ -2,14 +2,14 @@
 #+TITLE: Choregraphe の バーチャルロボットで Pepper のタブレットをエミュレートするための設定例やサンプルコードなど
 #+AUTHOR: Shigeru Hagiwara
 #+EMAIL: hgwr@moreslowly.jp
-#+DATE: 2016-09-29 ごろ
+#+DATE: 2016年09月ごろ
 
 Choregraphe の バーチャルロボットで Pepper のタブレットをエミュレートするための設定例やサンプルコードなど
 
 * はじめに
 
-hgwr/PepperTabletEmulator は、 [[http://tkawata.hatenablog.com/entry/2015/04/27/010050][バーチャルロボットで Pepper のタブレットをエミュレート]] で紹介されていた [[https://github.com/tkawata1025/PepperTabletEmulator][tkawata1025/PepperTabletEmulator]] を基に、 Apache の設定例を加えたりサンプルコードを追加していたりします。 
-セットアップ手順で紹介しているソフトウェアのバージョンは、 2016年9月頃のものです。
+hgwr/PepperTabletEmulator では、 [[http://tkawata.hatenablog.com/entry/2015/04/27/010050][バーチャルロボットで Pepper のタブレットをエミュレート]] で紹介されていた [[https://github.com/tkawata1025/PepperTabletEmulator][tkawata1025/PepperTabletEmulator]] を基に、 Apache の設定例を加えたりサンプルコードを追加していたりします。 
+セットアップ手順で紹介しているソフトウェアのバージョンは 2016年9月頃のものです。
 id:takuji_kawata さんの情報は大変参考になりました。ありがとうございます。
 
 * Mac 向け Pepper Tablet Emulator セットアップ手順
@@ -23,7 +23,7 @@ id:takuji_kawata さんの情報は大変参考になりました。ありがと
 
 - https://developer.softbankrobotics.com/jp-ja/downloads/nao-v5-v4 からダウンロードし、インストールします。
 - セットアッププログラムを実行すると、 /Applications/Aldebaran Robotics/Choregraphe Suite 2.1 にインストールされます。
-- 2016年9月ごろですと、 Choregraphe Suite 2.1.4 がインストールされます。
+- 2016年9月ごろですと、 Choregraphe Suite 2.1.4 がインストールされました。
 
 ** NAOqi Python SDK をインストール
 
@@ -32,8 +32,7 @@ id:takuji_kawata さんの情報は大変参考になりました。ありがと
 [[http://doc.aldebaran.com/2-1/dev/python/install_guide.html][Python SDK Install Guide]] に従い、 Python SDK をインストールします。
 [[http://doc.aldebaran.com/2-1/dev/community_software.html#retrieving-software][Retrieving software]] にあるとおり、ユーザ登録が必要になるかもしれません。
 
-Python 2.7 SDK 2.1.4 Mac 64 を [[https://community.aldebaran.com/en/resources/software][Aldebaran Community]] からダウンロードします
-(注: いまは community.ald.softbankrobotics.com へのリダイレクトになっています)。
+Python 2.7 SDK 2.1.4 Mac 64 を [[https://community.aldebaran.com/en/resources/software][Aldebaran Community]] からダウンロードします(注: いまは community.ald.softbankrobotics.com へのリダイレクトになっています)。
 2016年9月現在では、 pynaoqi-python2.7-2.1.4.13-mac64.tar.gz が手に入ります。
 
 ダウンロードしたファイルを適切な場所に展開します。
@@ -44,7 +43,7 @@ Python 2.7 SDK 2.1.4 Mac 64 を [[https://community.aldebaran.com/en/resources/s
 この場合では、インストールディレクトリは $HOME/lib/pynaoqi-python2.7-2.1.4.13-mac64 となります。
 
 python コードから使用する場合は、下記のように環境変数を設定します。
-注) PepperTabletEmulator のシェルスクリプト内で環境変数を設定しているので、必ずしも ~/.bashrc などに設定を追加する必要はありません。
+(注: PepperTabletEmulator のシェルスクリプト内で環境変数を設定しているので、必ずしも ~/.bashrc などに設定を追加する必要はありません。)
 
 : export PYTHONPATH=${PYTHONPATH}:${HOME}/lib/pynaoqi-python2.7-2.1.4.13-mac64
 : export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:${HOME}/lib/pynaoqi-python2.7-2.1.4.13-mac64
@@ -101,7 +100,7 @@ DocumentRoot が /opt/local/apache2/htdocs の場合は、展開したフォル�
 
 *** sudo pip install tornado
 
-pip をまだ設定していない場合、次のコマンドを実行してまず pip をインストールします
+pip をまだ設定していない場合、次のコマンドを実行してまず pip をインストールします。
 
 : sudo easy_install pip
 
@@ -171,14 +170,14 @@ Choregraphe で PepperTabletEmulator/choregraphe/start-web-interface/start-web-i
 
 *** Choregraphe を操作し、ヴァーチャルロボットに喋らせるデモを実行します
 
-Choregraphe の Play ボタンを押すと、 Say ボックスにより「Please wait, Loading...」のような発話が「ダイアログ」の部分に表示され、次に Hello ボックスによって手を振る挨拶の動作表示が、ロボットビューで表示されるはずです。
+Choregraphe の Play ボタンを押すと、 Say ボックスにより「Please wait, Loading...」のような発話が「ダイアログ」の部分に表示され、次に Hello ボックスによって手を振る挨拶の動作表示が、ロボットビューで表示されます。
 
 そして Show Web View ボックスに実行が至ると Safari (もしくはデフォルトのブラウザ)が起動し、 http://127.0.0.1/pepper/ が表示されます。
-ここで表示されるページの html ソースは install_files/htdocs/index.html です。
+ここで表示されるページの html ソースは install_files/htdocs/index.html で、 JavaScript ソースは install_files/htdocs/js/pepper.js です。
 ここでブラウザで開発者コンソールを表示しておいてください。
-console.log(...) で、実行中のログを確認するためです。
+pepper.js から console.log(...) で出力されるログを確認するためです。
 
-04_run_choregraphe.sh によって、 Choregraphe が起動中のはずです。これによって 127.0.0.1 でヴァーチャルロボットが立ち上げられているはずです。
+04_run_choregraphe.sh によって、 Choregraphe が起動中のはずです。これによって 127.0.0.1 でヴァーチャルロボットが立ち上げられていると思います。
 Choregraphe 画面右下のロボットビューに表示されている Pepper のことです。接続状況は Choregraphe の接続ボタンまたは接続メニューの「接続...」で確認できます。
 ブラウザで表示されているペッパーの IP アドレス欄は、デフォルト値の 127.0.0.1 のまま接続ボタンを押します。
 
@@ -191,7 +190,7 @@ Choregraphe の 「ダイアログ」の部分に、「Please wait, Loading...�
 
 : ロボット：Please wait, Loading...
 : ロボット：Please wait, Loading...
-: ロボット：こんにちは、僕はペッパー！[Wed Sep 28 2016 02:48:10 GMT+0900 (JST)]
+: ロボット：こんにちは、僕はペッパー！[Wed Sep 29 2016 09:48:10 GMT+0900 (JST)]
 : ロボット：ペッパーに話させるテキスト
 : ロボット：ペッパーに話させる属性値テキスト
 
@@ -199,4 +198,4 @@ Choregraphe の 「ダイアログ」の部分に、「Please wait, Loading...�
 
 ** 終了手順
 
-Choregraphe を終了させます。そのあと ターミナル3からターミナル1で Ctrl-C を押し、プロセスを終了させます。
+Choregraphe を終了させます。そのあと ターミナル3、ターミナル2、ターミナル1 で Ctrl-C を押し、プロセスを終了させます。
