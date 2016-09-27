@@ -45,7 +45,8 @@ class MyClass(GeneratedClass):
         # problems with connections and disconnections of the tablet during the life of the application
         tabletService = self._getTabletService()
         if tabletService:
-            # 参考元「PepperのタブレットにWebページを表示してみる」 http://qiita.com/tokuhisa_f/items/1746c5a6993d9f19f2cb
+            # 参考元1: 「PepperのタブレットにWebページを表示してみる」 http://qiita.com/tokuhisa_f/items/1746c5a6993d9f19f2cb
+            # 参考元2: http://doc.aldebaran.com/2-1/naoqi/core/altabletservice-api.html
             ## Wifiを有効化
             # tabletService.enableWifi()
             ## Wifiの設定．securityはwepかwpaかopen，keyは暗号鍵．
