@@ -1,3 +1,6 @@
+//
+// 参考元: PepperをJavaScriptで動かそう！ http://qiita.com/ExA_DEV/items/dd4bda65dfab1e7f5d07
+//
 $(function(){
   var qis, ip, als = {};
 
