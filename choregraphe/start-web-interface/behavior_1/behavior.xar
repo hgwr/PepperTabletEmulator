@@ -45,6 +45,7 @@ class MyClass(GeneratedClass):
         # problems with connections and disconnections of the tablet during the life of the application
         tabletService = self._getTabletService()
         if tabletService:
+            # 参考元「PepperのタブレットにWebページを表示してみる」 http://qiita.com/tokuhisa_f/items/1746c5a6993d9f19f2cb
             ## Wifiを有効化
             # tabletService.enableWifi()
             ## Wifiの設定．securityはwepかwpaかopen，keyは暗号鍵．
@@ -255,7 +256,7 @@ class MyClass(GeneratedClass):
                                                     <chinese>
                                                         <![CDATA[]]>
 </chinese>
-                                                    <language>10</language>
+                                                    <language>11</language>
                                                 </pluginContent>
                                                 <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
                                                 <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Data is sent on the output when this input is stimulated." id="2" />
