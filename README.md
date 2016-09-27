@@ -1,3 +1,32 @@
+- [はじめに](#はじめに)
+- [Mac 向け Pepper Tablet Emulator セットアップ手順](#mac-向け-pepper-tablet-emulator-セットアップ手順)
+  - [前提条件](#前提条件)
+  - [Choregraph のインストール](#choregraph-のインストール)
+  - [NAOqi Python SDK をインストール](#naoqi-python-sdk-をインストール)
+  - [Web server のインストール、セットアップ](#web-server-のインストール、セットアップ)
+    - [インストール](#インストール)
+    - [設定ファイル](#設定ファイル)
+    - [サンプルの html と js ファイルをブラウザから見れるようにします](#サンプルの-html-と-js-ファイルをブラウザから見れるようにします)
+  - [libqi-js のセットアップ](#libqi-js-のセットアップ)
+    - [libqi-js の入手と展開](#libqi-js-の入手と展開)
+    - [ファイルを展開し libqi-js の libs ディレクトリをブラウザから見れるようにします](#ファイルを展開し-libqi-js-の-libs-ディレクトリをブラウザから見れるようにします)
+    - [qimessaging-json を /usr/local/bin に保存](#qimessaging-json-を-/usr/local/bin-に保存)
+  - [tornadoのインストール](#tornadoのインストール)
+    - [sudo pip install tornado](#sudo-pip-install-tornado)
+  - [tornadio2 のインストール](#tornadio2-のインストール)
+  - [Pepper Tablet Emulator のセットアップ](#pepper-tablet-emulator-のセットアップ)
+    - [sh\_settings の編集](#sh\_settings-の編集)
+- [Mac 向け Pepper Tablet Emulator 起動手順](#mac-向け-pepper-tablet-emulator-起動手順)
+  - [Apache を起動](#apache-を起動)
+  - [シェルスクリプト群を使用し、次の手順で Pepper Tablet Emulator を起動します](#シェルスクリプト群を使用し、次の手順で-pepper-tablet-emulator-を起動します)
+    - [ターミナル1](#ターミナル1)
+    - [ターミナル2](#ターミナル2)
+    - [ターミナル3](#ターミナル3)
+    - [ターミナル4](#ターミナル4)
+    - [Choregraphe を操作し、ヴァーチャルロボットに喋らせるデモを実行します](#choregraphe-を操作し、ヴァーチャルロボットに喋らせるデモを実行します)
+  - [終了手順](#終了手順)
+
+
 Choregraphe の バーチャルロボットで Pepper のタブレットをエミュレートするための設定例やサンプルコードなど
 
 # はじめに<a id="sec-1" name="sec-1"></a>
