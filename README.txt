@@ -195,3 +195,8 @@ Choregraphe の 「ダイアログ」の部分に、「Please wait, Loading...�
 : ロボット：ペッパーに話させるテキスト
 : ロボット：ペッパーに話させる属性値テキスト
 
+これらの発話は install_files/htdocs/js/pepper.js によって行われています。
+
+** 終了手順
+
+Choregraphe を終了させます。そのあと ターミナル3からターミナル1で Ctrl-C を押し、プロセスを終了させます。
