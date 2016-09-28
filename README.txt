@@ -80,6 +80,9 @@ index.html などのファイルがシンボリックリンクで参照できる
 加えて、 Apache httpd プロセスが index.html などのファイルを閲覧可能になっているように、パーミッションの設定変更が必要かもしれません。
 面倒な場合は、 DocumentRoot 以下に pepper 等ディレクトリを作成し、そこに install_files/htdocs/ 以下のファイルを cp -r して置くのがいいかもしれません。
 
+サンプルの html と js ファイルは [[http://qiita.com/ExA_DEV/items/dd4bda65dfab1e7f5d07][PepperをJavaScriptで動かそう！]] を参考にました。
+JavaScript を使って Pepper を動作させる方法についてわかりやすい説明がありますので、ぜひご一読ください。
+
 ** libqi-js のセットアップ
 
 *** libqi-js の入手と展開
