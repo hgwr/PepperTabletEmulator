@@ -129,15 +129,15 @@ pip をまだ設定していない場合、次のコマンドを実行してま�
 
 ## tornadio2 のインストール<a id="sec-2-7" name="sec-2-7"></a>
 
--   <https://github.com/MrJoes/tornadio2> 右下 [Downlad ZIP]ボタンを押して、tornadio2 アーカイブファイルを入手
--   ファイルを展開して、展開したフォルダーの中に入って次を実行
+<https://github.com/MrJoes/tornadio2> 右下 [Downlad ZIP]ボタンを押して、tornadio2 アーカイブファイルを入手します。
+ファイルを展開して、展開したフォルダーの中に入って次を実行します。
 
     sudo ./setup.py install
 
 ## Pepper Tablet Emulator のセットアップ<a id="sec-2-8" name="sec-2-8"></a>
 
--   作業用ディレクトリを作成、移動
--   次のコマンドを実行
+hgwr/PepperTabletEmulator を git clone で持ってきて、 PepperTabletEmulator.py を /usr/local/bin 置きます。
+具体的には次のようにします。
 
     git clone https://github.com/hgwr/PepperTabletEmulator.git
     cd PepperTabletEmulator
