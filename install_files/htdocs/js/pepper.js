@@ -18,6 +18,13 @@ $(function(){
         qis.service('ALTextToSpeech').done(function(ins){
           als.alTextToSpeech = ins;
         });
+
+        console.log("### set timeout to speak");
+        setTimeout(function() {
+          console.log("### trigger click test-btn");
+          $('#test-btn').trigger('click');
+        }, 5000);
+
       })
       .on('disconnect', function(){
         // 接続断
@@ -45,4 +52,10 @@ $(function(){
       });
     }
   });
+
+  console.log("### set timeout");
+  setTimeout(function() {
+    console.log("### trigger click connect-btn");
+    $('#connect-btn').trigger('click');
+  }, 5000);
 });
