@@ -103,6 +103,9 @@ index.html などのファイルがシンボリックリンクで参照できる
 加えて、 Apache httpd プロセスが index.html などのファイルを閲覧可能になっているように、パーミッションの設定変更が必要かもしれません。
 面倒な場合は、 DocumentRoot 以下に pepper 等ディレクトリを作成し、そこに install\_files/htdocs/ 以下のファイルを cp -r して置くのがいいかもしれません。
 
+サンプルの html と js ファイルは [PepperをJavaScriptで動かそう！](http://qiita.com/ExA_DEV/items/dd4bda65dfab1e7f5d07) を参考にました。
+JavaScript を使って Pepper を動作させる方法についてわかりやすい説明がありますので、ぜひご一読ください。
+
 ## libqi-js のセットアップ<a id="sec-2-5" name="sec-2-5"></a>
 
 ### libqi-js の入手と展開<a id="sec-2-5-1" name="sec-2-5-1"></a>
@@ -129,15 +132,15 @@ pip をまだ設定していない場合、次のコマンドを実行してま�
 
 ## tornadio2 のインストール<a id="sec-2-7" name="sec-2-7"></a>
 
--   <https://github.com/MrJoes/tornadio2> 右下 [Downlad ZIP]ボタンを押して、tornadio2 アーカイブファイルを入手
--   ファイルを展開して、展開したフォルダーの中に入って次を実行
+<https://github.com/MrJoes/tornadio2> 右下 [Downlad ZIP]ボタンを押して、tornadio2 アーカイブファイルを入手します。
+ファイルを展開して、展開したフォルダーの中に入って次を実行します。
 
     sudo ./setup.py install
 
 ## Pepper Tablet Emulator のセットアップ<a id="sec-2-8" name="sec-2-8"></a>
 
--   作業用ディレクトリを作成、移動
--   次のコマンドを実行
+hgwr/PepperTabletEmulator を git clone で持ってきて、 PepperTabletEmulator.py を /usr/local/bin 置きます。
+具体的には次のようにします。
 
     git clone https://github.com/hgwr/PepperTabletEmulator.git
     cd PepperTabletEmulator
