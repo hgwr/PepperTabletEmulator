@@ -2,7 +2,17 @@
 // 参考元: PepperをJavaScriptで動かそう！ http://qiita.com/ExA_DEV/items/dd4bda65dfab1e7f5d07
 //
 $(function(){
+
+  function console_log(msg) {
+    console.log(msg);
+    if ($("#log").length > 0) {
+      $("#log").append('<div>' + '[' + Date().toLocaleString() + '] ' + msg + '</div>');
+    }
+  }
+
   var qis, ip, als = {};
+
+  console_log('start');
 
   // 接続ボタンclickイベント
   $('#connect-btn').on('click', function(){
@@ -14,33 +24,34 @@ $(function(){
     qis.socket()
       .on('connect', function(){
         // 接続成功
-        console.log('[CONNECTED]');
+        console_log('[CONNECTED]');
         qis.service('ALTextToSpeech').done(function(ins){
           als.alTextToSpeech = ins;
         });
 
-        console.log("### set timeout to speak");
+        console_log("### set timeout to speak");
         setTimeout(function() {
-          console.log("### trigger click test-btn");
+          console_log("### trigger click test-btn");
           $('#test-btn').trigger('click');
         }, 5000);
 
       })
       .on('disconnect', function(){
         // 接続断
-        console.log('[DISCONNECTED]');
+        console_log('[DISCONNECTED]');
       })
       .on('error', function(){
         // 接続エラー
-        console.log('[CONNECTION ERROR] でも10秒くらい待つと [CONNECTED] になることもあります。');
+        console_log('[CONNECTION ERROR] でも10秒くらい待つと [CONNECTED] になることもあります。');
       });
   });
 
   // テストボタンclickイベント
   $('#test-btn').on('click', function(){
     // TODO: ここに動作確認のコードを書く
-    console.log('[TEST]');
+    console_log('[TEST]');
     if (als.alTextToSpeech) {
+      console_log('calling als.alTextToSpeech.say');
       als.alTextToSpeech.say('こんにちは、僕はペッパー！' + '[' + Date().toLocaleString() + '] ');
 
       $('.speech').each(function() {
@@ -53,9 +64,9 @@ $(function(){
     }
   });
 
-  console.log("### set timeout");
+  console_log("### set timeout");
   setTimeout(function() {
-    console.log("### trigger click connect-btn");
+    console_log("### trigger click connect-btn");
     $('#connect-btn').trigger('click');
   }, 5000);
 });
