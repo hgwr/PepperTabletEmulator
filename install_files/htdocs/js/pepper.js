@@ -35,6 +35,16 @@ $(function(){
           $('#test-btn').trigger('click');
         }, 5000);
 
+        // TODO
+        qis.service('ALMemory').done(function(alMemory){
+          alMemory.subscriber('HandLeftBackTouched').done(function(subscriber){
+            subscriber.signal.connect(function(val){
+              // イベントが発生すると呼び出される
+              console.log('[EVENT]HandLeftBackTouched:' + val);
+            });
+          });
+        });
+
       })
       .on('disconnect', function(){
         // 接続断
