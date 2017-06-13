@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- 参考元: PepperをJavaScriptで動かそう！ http://qiita.com/ExA_DEV/items/dd4bda65dfab1e7f5d07 -->
+<head>
+    <meta charset="UTF-8" />
+    <title>Pepper Control Panel</title>
+    <script src="/libs/qimessaging/1.0/jquery.min.js"></script>
+    <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
+    <script src="js/gestures.js"></script>
+    <script src="js/lib-pepper.js"></script>
+    <style>
+      #log { font-size: medium; }
+      body { font-size: large; }
+      input { font-size: large; }
+      button { font-size: large; }
+      select { font-size: large; }
+    </style>
+</head>
+<body>
+  <div>Pepper Control Panel</div>
+  <br>
+  <div>
+    <label for="ip">ペッパーのIPアドレス:</label><input type="text" id="ip" value="pepper.local"></input>
+    <button type="button" id="connect-btn">接続</button>
+  </div>
+  <br>
+
+  <div>
+    <label for="text-for-reading">セリフ:</label><input type="text" id="text-for-reading" size="80" value="こんにちは"></input>
+    <button type="button" id="reading-btn">読み上げ</button>
+  </div>
+  <br>
+
+  <div>
+    <label for="url-for-tablet">タブレットに表示する URL:</label><input type="text" id="url-for-tablet" size="80" value="http://www.google.com/"></input>
+    <button type="button" id="load-url-btn">タブレットに表示</button>
+  </div>
+  <br>
+
+  <div>
+    <div>ジェスチャー:  <button type="button" id="hey-btn">Hey</button></div>
+    <br>
+    
+    <div>
+      <select id="gesture-group-menu"></select>
+      <select id="gesture-menu"></select>
+      <button type="button" id="run-gesture-btn">Run Gesture</button>
+    </div>
+  </div>
+  <br>
+
+  <div style="font-size: 60px">
+    <a href="sample.html">Sample</a>
+  </div>
+  <br>
+
+  <!--
+  <br>
+  <div class="speech">読み上げられるテキスト</div>
+  <div class="speech" data-text="読み上げられる属性値"></div>
+  <br>
+  -->
+
+  <div id="log">ここにログが出ます。</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- 参考元: PepperをJavaScriptで動かそう！ http://qiita.com/ExA_DEV/items/dd4bda65dfab1e7f5d07 -->
+<head>
+    <meta charset="UTF-8" />
+    <title>Sample</title>
+    <script src="/libs/qimessaging/1.0/jquery.min.js"></script>
+    <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
+    <script src="js/gestures.js"></script>
+    <script src="js/lib-pepper.js"></script>
+    <style>
+      #log { font-size: medium; }
+      body { font-size: 60px; }
+      input { font-size: 60px; }
+      button { font-size: 60px; }
+      select { font-size: 60px; }
+    </style>
+</head>
+<body>
+  <div>Sample</div>
+  <br>
+
+  <div>speech クラスは自動で内容が読み上げられます。</div>
+  <div class="speech">speech クラス</div>
+  <br>
+  
+  <div class="speech" data-text="属性値">
+    data-text 属性があれば、そっちが優先されます。
+    この div の場合は「属性値」が読み上げられます。
+  </div>
+  <br>
+
+  <div class="speech" data-gesture="Hey_1">
+    ジェスチャー Hey_1 を実行。
+  </div>
+  <br>
+
+  <div>
+    data-gesture 属性があれば、そこに書かれたジェスチャーが実行されます。
+    ただし、セリフとジェスチャーが実行されるタイミングは同期しないようです。
+  </div>
+  <br>
+
+  <div class="speech" data-gesture="Joy_1">ジェスチャー  Joy_1 を実行</div>
+  <br>
+
+  <div>
+    <a href="control-panel.html">Pepper Control Panel</a>
+  </div>
+
+</body>
+</html>
