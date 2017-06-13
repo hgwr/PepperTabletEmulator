@@ -10,10 +10,10 @@
     <script src="js/lib-pepper.js"></script>
     <style>
       #log { font-size: medium; }
-      body { font-size: 60px; }
-      input { font-size: 60px; }
-      button { font-size: 60px; }
-      select { font-size: 60px; }
+      body { font-size: 30px; }
+      input { font-size: 30px; }
+      button { font-size: 30px; }
+      select { font-size: 30px; }
     </style>
 </head>
 <body>
@@ -23,25 +23,19 @@
   <div>speech クラスは自動で内容が読み上げられます。</div>
   <div class="speech">speech クラス</div>
   <br>
-  
-  <div class="speech" data-text="属性値">
+
+  <div class="speech" data-text="属性値" >
     data-text 属性があれば、そっちが優先されます。
     この div の場合は「属性値」が読み上げられます。
   </div>
   <br>
 
-  <div class="speech" data-gesture="Hey_1">
-    ジェスチャー Hey_1 を実行。
+  <div class="speech" data-text="こんにちは ^run(animations/Stand/Gestures/Hey_1) こんばんは" >
+    Pepper に言わせたいセリフとジェスチャーを同期させるには
+    http://doc.aldebaran.com/2-4/naoqi/audio/alanimatedspeech.html
+    にかかれているシンタックスを利用します。
+    例: "こんにちは ^run(animations/Stand/Gestures/Hey_1) こんばんは"
   </div>
-  <br>
-
-  <div>
-    data-gesture 属性があれば、そこに書かれたジェスチャーが実行されます。
-    ただし、セリフとジェスチャーが実行されるタイミングは同期しないようです。
-  </div>
-  <br>
-
-  <div class="speech" data-gesture="Joy_1">ジェスチャー  Joy_1 を実行</div>
   <br>
 
   <div>

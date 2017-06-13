@@ -21,43 +21,62 @@ $(function(){
     qis = new QiSession(ip);
     // 接続
     qis.socket().on('connect', function() {
-        // 接続成功
-        console_log('[CONNECTED]');
-        qis.service('ALTextToSpeech').done(function(ins){
-          als.alTextToSpeech = ins;
-        });
-        qis.service('ALAnimationPlayer').done(function(ins){
-          als.alAnimationPlayer = ins;
-        });
-        qis.service('ALTabletService').done(function(ins){
-          als.alTabletService = ins;
+      // 接続成功
+      console_log('[CONNECTED]');
+      qis.service('ALAnimatedSpeech').done(function(ins){
+        als.alAnimatedSpeech = ins;
+      });
+      qis.service('ALAnimationPlayer').done(function(ins){
+        als.alAnimationPlayer = ins;
+      });
+      qis.service('ALTabletService').done(function(ins){
+        als.alTabletService = ins;
+      });
+
+      qis.service('ALMemory').done(function(alMemory){
+        alMemory.subscriber('HandLeftBackTouched').done(function(subscriber){
+          subscriber.signal.connect(function(val){
+            // イベントが発生すると呼び出される
+            console_log('[EVENT]HandLeftBackTouched:' + val);
+          });
         });
 
-      }).on('disconnect', function() {
-        // 接続断
-        console_log('[DISCONNECTED]');
-      }).on('error', function() {
-        // 接続エラー
-        console_log('[CONNECTION ERROR] でも10秒くらい待つと [CONNECTED] になることもあります。');
+        alMemory.subscriber('ALAnimatedSpeech/EndOfAnimatedSpeech').done(function(subscriber){
+          subscriber.signal.connect(function(val){
+            // イベントが発生すると呼び出される
+            console_log('[EVENT]ALAnimatedSpeech/EndOfAnimatedSpeech:' + val);
+          });
+        });
+
       });
+
+    }).on('disconnect', function() {
+      // 接続断
+      console_log('[DISCONNECTED]');
+    }).on('error', function() {
+      // 接続エラー
+      console_log('[CONNECTION ERROR] でも10秒くらい待つと [CONNECTED] になることもあります。');
+    });
   }
 
   function runSpeech() {
     console_log('start runSpeech()');
-    if (als.alTextToSpeech) {
-      console_log('calling als.alTextToSpeech.say');
+    if (als.alAnimatedSpeech) {
+      console_log('calling als.alAnimatedSpeech.say');
       $('.speech').each(function() {
+        console_log('data-text = ' + $(this).data('text'));
+        console_log('data-gesture = ' + $(this).data('gesture'));
         if ($(this).data('text')) {
-          als.alTextToSpeech.say($(this).data('text'));
+          als.alAnimatedSpeech.say($(this).data('text'));
         } else {
-          als.alTextToSpeech.say($(this).text());
+          als.alAnimatedSpeech.say($(this).text());
         }
         if ($(this).data('gesture')) {
           als.alAnimationPlayer.run("animations/Stand/Gestures/" + $(this).data('gesture'));
         }
       });
     } else {
-      console_log('Error: ALTextToSpeech が取得できていません。');
+      console_log('Error: ALAnimatedSpeech が取得できていません。');
     }
   }
 
@@ -76,11 +95,11 @@ $(function(){
   // 読み上げボタン click イベント
   $('#reading-btn').on('click', function() {
     console_log('reading button pushed');
-    if (als.alTextToSpeech) {
-      console_log('calling als.alTextToSpeech.say');
-      als.alTextToSpeech.say($('#text-for-reading').val());
+    if (als.alAnimatedSpeech) {
+      console_log('calling als.alAnimatedSpeech.say');
+      als.alAnimatedSpeech.say($('#text-for-reading').val());
     } else {
-      console_log('Error: ALTextToSpeech が取得できていません。');
+      console_log('Error: ALAnimatedSpeech が取得できていません。');
     }
   });
 
