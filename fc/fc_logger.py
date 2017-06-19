@@ -23,7 +23,7 @@ if os.path.isfile(log_file_name):
     print 'Error: File %s already exists.' % log_file_name
     quit()
 
-f = open(log_file_name, 'w')
+log_file = open(log_file_name, 'w')
 
 ##### Pepper と接続
 
@@ -50,6 +50,16 @@ def byDistance(a, b):
         return 1
     else:
         return 0
+
+def onMessageFromTablet(value):
+    timestr = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+    msg = "JavaScript log: %s: %s" % (timestr, value)
+    print msg
+    log_file.write(msg)
+    log_file.write("\n")
+
+subscriber = memory.subscriber("PepperQiMessaging/fromtablet")
+subscriber.signal.connect(onMessageFromTablet)
 
 print "データ取得開始: Ctrl-C でスクリプトを終了します。"
 
@@ -96,5 +106,5 @@ while True:
         output = "%s: %d: " % (timestr, peopleId)
 
     print output
-    f.write(output)
-    f.write("\n")
+    log_file.write(output)
+    log_file.write("\n")
