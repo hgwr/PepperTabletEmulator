@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="start-web-interface-01623b">
+<package version="0.0.0" uuid="start-web-interface-01623b">
  <names>
   <name lang="en_US">start-web-interface</name>
  </names>

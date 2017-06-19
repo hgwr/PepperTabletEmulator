@@ -4,7 +4,7 @@ import os.path
 import time
 import signal
 from datetime import datetime
-from naoqi import ALProxy
+from naoqi import *
 
 from mock_memory import MockMemory # for testing
 
@@ -30,6 +30,9 @@ log_file = open(log_file_name, 'w')
 tts = ALProxy("ALTextToSpeech", "Pepper.local", 9559)
 tts.say("スクリプト開始")
 
+print "ALBroker"
+boroker = ALBroker("pythonBroker", "0.0.0.0", 0, "Pepper.local", 9559)
+
 print "connecting ALMemory ..."
 memory = ALProxy("ALMemory", "Pepper.local", 9559)
 # memory = MockMemory()
@@ -51,15 +54,26 @@ def byDistance(a, b):
     else:
         return 0
 
-def onMessageFromTablet(value):
-    timestr = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-    msg = "JavaScript log: %s: %s" % (timestr, value)
-    print msg
-    log_file.write(msg)
-    log_file.write("\n")
+class MyModule(ALModule):
+    """ fantastic My Module document
+    """
+    def onMessageFromTablet(self, varName, value):
+        """ awesome onMessageFromTablet document
+        """
+        timestr = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        msg = "JavaScript log: %s: %s %s" % (timestr, varName, value)
+        print msg
+        log_file.write(msg)
+        log_file.write("\n")
 
-subscriber = memory.subscriber("PepperQiMessaging/fromtablet")
-subscriber.signal.connect(onMessageFromTablet)
+    def onFaceDetected(self, varName, value):
+        timestr = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        print "onFaceDetected: %s %s %s" % (timestr, varName, value)
+
+myModule = MyModule("myModule")
+
+memory.subscribeToEvent("PepperQiMessaging/fromtablet", "myModule", "onMessageFromTablet")
+# memory.subscribeToEvent("FaceDetected", "myModule", "onFaceDetected")
 
 print "データ取得開始: Ctrl-C でスクリプトを終了します。"
 
@@ -76,7 +90,12 @@ while True:
     else:
         print "  見つけました。 peopleIds = ", peopleIds
     
-    peopleIds = map(combineWithDistance, peopleIds)
+    try:
+        peopleIds = map(combineWithDistance, peopleIds)
+    except RuntimeError as e:
+        print "  人を見失いました。"
+        continue
+
     peopleIds.sort(byDistance)
 
     peopleId = peopleIds[0][0]
