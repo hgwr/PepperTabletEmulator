@@ -74,12 +74,22 @@ while True:
     try:
         expressionData = memory.getData("PeoplePerception/Person/%d/ExpressionProperties" % peopleId)
     except RuntimeError as e:
+        expressionData = None
         print "感情表現データの取得なし"
 	continue
 
+    try:
+        smileData = memory.getData("PeoplePerception/Person/%d/SmileProperties" % peopleId)
+    except RuntimeError as e:
+        smileData = None
+        print "笑顔度のデータの取得なし"
+	continue
+
     output = ""
-    if expressionData and len(expressionData) == 5:
-        
+    if expressionData and len(expressionData) == 5 and smileData:
+        annotated = zip(expressionNames + ["Smile"], expressionData + [smileData])
+        output = "%s: %d: %s" % (timestr, peopleId, ', '.join(map(str, annotated)))
+    elif expressionData and len(expressionData) == 5:
         annotated = zip(expressionNames, expressionData)
         output = "%s: %d: %s" % (timestr, peopleId, ', '.join(map(str, annotated)))
     else:
