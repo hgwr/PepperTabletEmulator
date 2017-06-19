@@ -7,7 +7,7 @@
     <script src="/libs/qimessaging/1.0/jquery.min.js"></script>
     <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
     <script src="js/gestures.js"></script>
-    <script src="js/lib-pepper.js"></script>
+    <script src="js/lib-pepper.js?201706191522"></script>
     <style>
       #log { font-size: medium; }
       body { font-size: large; }
@@ -32,8 +32,14 @@
   <br>
 
   <div>
-    <label for="url-for-tablet">タブレットに表示する URL:</label><input type="text" id="url-for-tablet" size="80" value="http://www.google.com/"></input>
+    <label for="url-for-tablet">タブレットに表示する URL:</label><input type="text" id="url-for-tablet" size="60" value="http://www.google.com/"></input>
     <button type="button" id="load-url-btn">タブレットに表示</button>
+  </div>
+  <br>
+
+  <div>
+    <label for="log-for-choregraphe">Choregraphe のログに出力:</label><input type="text" id="log-for-choregraphe" size="60" value="テストのログ"></input>
+    <button type="button" id="send-log">ログ出力</button>
   </div>
   <br>
 

@@ -4,14 +4,18 @@
 //
 $(function(){
 
+  var PepperIP = null;  // ここで Pepper の IP を文字列で直接指定できます。
+  var qis, ip, als = {};
+
   function console_log(msg) {
     console.log(msg);
     if ($("#log").length > 0) {
       $("#log").prepend('<div>' + '[' + Date().toLocaleString() + '] ' + msg + '</div>');
     }
+    if (als.alMemory) {
+      als.alMemory.raiseEvent("PepperQiMessaging/fromtablet", msg);
+    }
   }
-
-  var PepperIP = null;  // ここで Pepper の IP を文字列で直接指定できます。
 
   function connectToPepper() {
     console_log('connecting');
@@ -31,6 +35,11 @@ $(function(){
       });
       qis.service('ALTabletService').done(function(ins){
         als.alTabletService = ins;
+      });
+      qis.service("ALMemory").done(function (ins) {
+        console_log("ALMemory 取得成功");
+        als.alMemory = ins
+        als.alMemory.raiseEvent("PepperQiMessaging/fromtablet", "JavaScript が ALMemory 取得成功");
       });
 
       qis.service('ALMemory').done(function(alMemory){
@@ -80,8 +89,6 @@ $(function(){
     }
   }
 
-  var qis, ip, als = {};
-
   console_log('start');
   // ページロード後、自動で接続し読み上げをはじめます。
   setTimeout(function() {
@@ -113,6 +120,12 @@ $(function(){
     } else {
       console_log('Error: AlTabletService が取得できていません。');
     }
+  });
+
+  // ログ出力のテスト
+  $('#send-log').on('click', function() {
+    console_log('20160619 1522 ログ出力ボタンが押されました。');
+    console_log($('#log-for-choregraphe').val());
   });
 
   // Hey ボタン
